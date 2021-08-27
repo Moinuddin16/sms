@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin' ,'middleware' => 'auth'],function () {
 
     //fee setup
     Route::resource('fees-setup', 'FeesSetupController');
+    Route::post('filter-fess-setup', 'FeesSetupController@filterFessSetup');
 
 });
 

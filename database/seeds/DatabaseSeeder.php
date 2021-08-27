@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
         // $this->call(SmsGroupTableSeeder::class);
         // $this->call(SmsSessionTableSeeder::class);
         // $this->call(SmsYearTableSeeder::class);
+        $this->call(SmsPaymentTypeTableSeeder::class);
   
-        factory(SmsStudent::class, 100)->create()->each(function ($student) {
-            $student->posts()->save(factory(SmsStudent::class)->make());
-        });
+        // factory(SmsStudent::class, 100)->create()->each(function ($student) {
+        //     $student->posts()->save(factory(SmsStudent::class)->make());
+        // });
         
     }
 }

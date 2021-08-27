@@ -30,6 +30,28 @@ changeStudentStatus = (id, status) => {
     makeAPostAjaxRequest(baseUrl + '/admin/student/change-status', { _token:csrfToken , id: id, status: status }, successCallback, errorCallback);  
 }
 
+filterTable = (otherFilters) => {
+    let FilterItem = [];
+    otherFilters.forEach(element => {
+    let getValue = $('#filter_' + element).val();
+     let FilterItemValue = [{element,getValue }];
+     FilterItem.push(FilterItemValue);
+    })
+
+    successCallback = (data) => {
+       $('#inner_div').html("");
+       $('#inner_div').html(data);
+    }
+    
+    errorCallback = (data) => {
+       
+    }
+    makeAPostAjaxRequest(baseUrl + '/admin/filter-fess-setup',{_token:csrfToken ,'data':JSON.stringify(FilterItem)}, successCallback, errorCallback); 
+}
+
+otherFilterId = (ids) => {
+
+}
 makeAPostAjaxRequest = (url, data, successCallback, errorCallback) => {
     $.ajax({
         url: url,

@@ -88,7 +88,23 @@ class FeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator =  \Validator::make($request->all(),[
+            'name' => 'required|string|max:255',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+    
+        $fee = SmsFee::find($id);
+        $fee->name = $request->name;
+        $result = $fee->save();
+ 
+       if($result){
+           return redirect()->route('fees.index')->with(['alert-type' => 'success','message'=>'Fee Updated Successfully']);
+       }else{
+           return redirect()->route('fees.index')->with(['alert-type' => 'error','message'=>'Something went wrong']);
+       }
     }
 
     /**
