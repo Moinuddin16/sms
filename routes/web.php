@@ -35,5 +35,16 @@ Route::group(['prefix' => 'admin' ,'middleware' => 'auth'],function () {
     Route::resource('fees-setup', 'FeesSetupController');
     Route::post('filter-fess-setup', 'FeesSetupController@filterFessSetup');
 
+    //generate fee book
+    Route::resource('generate-fees-book', 'GenerateFeesBookController');
+    Route::post('filter-generate-fess-book', 'GenerateFeesBookController@filterGenerateFessBook');
+    Route::get('get-payment-category/{id}/{fees}', 'GenerateFeesBookController@getPaymentCategory');
+  
+
+    //fees book
+    Route::resource('fees-book', 'FeesBookController');
+    Route::post('filter-fess-book', 'FeesBookController@filterFessBook');
+    Route::Post('get-fees-setups', 'FeesBookController@getPaymentType');
+    Route::get('print-fees-book/{id}' , 'FeesBookController@printFeesBook');
 });
 

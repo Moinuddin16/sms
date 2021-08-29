@@ -64,8 +64,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @@if (context . page==='profile' ) {
-                                active }" href="@@webRoot/pages/profile.html">
+                            <a class="nav-link" href="{{url('admin/generate-fees-book')}}">
+                               Generate Fees Book
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{url('admin/fees-book')}}">
                                Fees Book
                             </a>
                         </li>

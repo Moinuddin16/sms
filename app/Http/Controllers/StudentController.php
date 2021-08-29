@@ -59,12 +59,14 @@ class StudentController extends Controller
                     $query->active_status == 1 ? $checked = "checked" : $checked = "";  
                     return '<input type="checkbox" onchange="changeStudentStatus('.$query->id.','.$query->active_status.')"'.$checked.'>';
                     
-                })->rawColumns(['action', 'active_status'])
+                })
+                ->rawColumns(['action', 'active_status'])
                         ->rawColumns(['action','active_status'])
                 ->make(true);
        }  
-    
-        return view('admin.student.index');
+       
+       $students = SmsStudent::all();
+        return view('admin.student.index',compact('students'));
     }
 
     /**
@@ -126,9 +128,9 @@ class StudentController extends Controller
         $result = $student->save();
  
        if($result){
-           return redirect()->route('student.create')->with(['alert-type' => 'success','message'=>'Student Added Successfully']);
+           return redirect()->route('student.index')->with(['alert-type' => 'success','message'=>'Student Added Successfully']);
        }else{
-           return redirect()->route('student.create')->with(['alert-type' => 'error','message'=>'Something went wrong']);
+           return redirect()->route('student.index')->with(['alert-type' => 'error','message'=>'Something went wrong']);
        }
     }
 
@@ -151,7 +153,13 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $classes = SmsClass::all(); 
+        $groups = SmsGroup::all(); 
+        $sections = SmsSection::all(); 
+        $sessions = SmsSession::all();
+        $years = SmsYear::all();
+        $editData = SmsStudent::find($id);
+       return view('admin.student.update',compact('classes','groups','sections','sessions','years','editData'));
     }
 
     /**
@@ -163,7 +171,45 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator =  \Validator::make($request->all(),[
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'gender' => 'required',
+            'date_of_birth' => 'required',
+            'present_address' => 'required',
+            'sms_no' => 'required',
+            'session' => 'required',
+            'year' => 'required',
+            'class' => 'required',
+            'group' => 'required',
+            'section' => 'required',
+            'roll_no' => 'required|numeric'
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+    
+        $student = SmsStudent::find($id);
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->gender = (int)$request->gender;
+        $student->date_of_birth = $request->date_of_birth;
+        $student->present_address = $request->present_address;
+        $student->sms_no = $request->sms_no;
+        $student->session = (int)($request->session);
+        $student->year = (int)($request->year);
+        $student->class = (int)$request->class;
+        $student->group = (int)$request->group;
+        $student->section = (int)$request->section;
+        $student->roll_no = $request->roll_no;
+        $result = $student->save();
+ 
+       if($result){
+           return redirect()->route('student.index')->with(['alert-type' => 'success','message'=>'Student Updated Successfully']);
+       }else{
+           return redirect()->route('student.index')->with(['alert-type' => 'error','message'=>'Something went wrong']);
+       }
     }
 
     /**

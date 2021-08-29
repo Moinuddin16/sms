@@ -1,5 +1,10 @@
 @extends('admin.master')
-@section('title', 'Add Student')
+@if (isset($editData))
+    @section('title', 'Edit Fees')
+@else
+    @section('title', 'Add Fees')
+@endif
+
 @section('main-content')
     <style>
         .edit-btn {

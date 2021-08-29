@@ -40,7 +40,7 @@ class FeesSetupController extends Controller
         $years = SmsYear::all();
         $fees = SmsFee::where('active_status',1)->get();
         $feesSetups = SmsFeesSetup::all();
-        
+ 
        return view('admin.fees-setup.create',compact('classes','groups','sections','sessions','years','paymentTypes','fees','feesSetups'));
     }
 
@@ -104,6 +104,7 @@ class FeesSetupController extends Controller
      */
     public function edit($id)
     {
+        $editData = SmsFeesSetup::find($id);
         $paymentTypes = SmsPaymentType::where('parent_id',0)->get();
         $classes = SmsClass::all(); 
         $groups = SmsGroup::all(); 
@@ -112,8 +113,11 @@ class FeesSetupController extends Controller
         $years = SmsYear::all();
         $fees = SmsFee::where('active_status',1)->get();
         $feesSetups = SmsFeesSetup::all();
-        $editData = SmsFeesSetup::find($id);
+        if($editData->is_editable == 0){ 
+            return redirect('admin/fees-setup/create')->with(['alert-type' => 'error','message'=>'This fees setup is already in use']);
+        }
         return view('admin.fees-setup.create',compact('classes','groups','sections','sessions','years','paymentTypes','fees','feesSetups','editData'));
+        
     }
 
     /**

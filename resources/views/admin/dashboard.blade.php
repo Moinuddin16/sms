@@ -37,7 +37,7 @@
                   </div>
                   <!-- project number -->
                   <div>
-                    <h1 class="fw-bold">12</h1>
+                    <h1 class="fw-bold">@if(isset($students)){{$students->count()}}@endif</h1>
                     {{-- <p class="mb-0"><span class="text-dark me-2">1</span>Completed</p> --}}
                   </div>
                 </div>

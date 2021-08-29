@@ -17,9 +17,9 @@ class SmsStudent extends Model
               return "Female";
               break;
             case 2:
-              return "male";
+              return "Male";
               break;
-            case 2:
+            case 3:
               return "Other";
               break;
           }

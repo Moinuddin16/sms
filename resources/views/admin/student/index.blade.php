@@ -9,7 +9,7 @@
             <div class="row mb-6">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div id="examples" class="mb-4">
-                        <h2>List of Student</h2>
+                        <h2>List of Student (@if(isset($students)){{$students ->count()}}@else{{"0"}}@endif)</h2>
                     </div>
                     <!-- Card -->
                     <div class="card">

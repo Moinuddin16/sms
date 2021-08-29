@@ -46,11 +46,11 @@
                                         <label for="gender">Gender: </label>
                                         <select id="gender" class="form-control" name="gender">
                                             <option value="">Choose...</option>
-                                            <option value="1" {{ currentSelectedItem('female', old('gender')) }}>Female
+                                            <option value="1" {{ currentSelectedItem('1', old('gender')) }}>Female
                                             </option>
-                                            <option value="2" {{ currentSelectedItem('male', old('gender')) }}>Male
+                                            <option value="2" {{ currentSelectedItem('2', old('gender')) }}>Male
                                             </option>
-                                            <option value="3" {{ currentSelectedItem('other', old('gender')) }}>Other
+                                            <option value="3" {{ currentSelectedItem('3', old('gender')) }}>Other
                                             </option>
                                         </select>
                                         @if ($errors->has('gender'))
@@ -79,7 +79,7 @@
                                 <div class="form-group pb-3">
                                     <label for="inputAddress">Present Address:</label>
                                     <input type="text" class="form-control" id="inputAddress" name="present_address"
-                                        placeholder="Enter your present address">
+                                        placeholder="Enter your present address" value="{{old('present_address')}}">
                                     @if ($errors->has('present_address'))
                                         <small class="text-danger">{{ $errors->first('present_address') }}</small>
                                     @endif
@@ -186,7 +186,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </form>
                         </div>
                     </div>

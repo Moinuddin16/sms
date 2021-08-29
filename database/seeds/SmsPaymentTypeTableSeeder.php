@@ -36,7 +36,9 @@ class SmsPaymentTypeTableSeeder extends Seeder
             ['parent_id' => 3, 'name' => "1st Term"],
             ['parent_id' => 3, 'name' => "2nd Term"],
             ['parent_id' => 3, 'name' => "3rd Term"],
-         
+            ['parent_id' => 4, 'name' => "Once"],
+            ['parent_id' => 5, 'name' => "Once"],
+    
         ]);
     }
 }

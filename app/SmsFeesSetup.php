@@ -44,4 +44,20 @@ class SmsFeesSetup extends Model
         $paymentType = SmsPaymentType::find($this->payment_type);
         return $paymentType->name;
     }
+    public function getPaymentTypeIdAttribute()
+    {
+        $paymentType = SmsPaymentType::find($this->payment_type);
+        return $paymentType->id;
+    }
+    public function getIsEditableAttribute()
+    {
+        $isEditable = SmsGenerateFeesBook::where('fees_setup_id',$this->id)->where('payment_status',1)->first();
+        return empty($isEditable) ? $isEditable = 1 : $isEditable = 0;
+    }
+    public function feesData ()
+    {
+        return $this->belongsTo('App\SmsFee','fees','id');
+    }
+
+  
 }

@@ -21,6 +21,7 @@
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="baseUrl" content="{{ url('/') }}">
+<meta name="currency" content="{{Config::get('app.curreny')}} ">
 <!-- Theme CSS -->
 <!-- build:css @@webRoot/assets/css/theme.min.css -->
 <link rel="stylesheet" href="{{asset('public/assets/css/theme.css')}}">

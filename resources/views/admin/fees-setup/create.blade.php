@@ -1,5 +1,10 @@
 @extends('admin.master')
-@section('title', 'Add Student')
+@if (isset($editData))
+    @section('title', 'Edit Fees Setup')
+@else
+    @section('title', 'Add Fees Setup')
+@endif
+
 @section('main-content')
     @php
     function currentSelectedItem($value, $old_value)
@@ -235,19 +240,22 @@
                         <div class="card-body">
                             <div class="row pb-3">
                                 <div class="col-lg-6">
-                                    <select class="form-control" onchange="filterTable(['class','session'])" id="filter_session">
+                                    <select class="form-control" onchange="filterTable(['class','session'])"
+                                        id="filter_session">
                                         <option value="">Filter by session</option>
                                         @if (isset($sessions))
-                                            @foreach ($sessions as $session)<option value="{{ $session->id }}">{{ $session->name }}</option> 
+                                            @foreach ($sessions as $session)
+                                                <option value="{{ $session->id }}">{{ $session->name }}</option>
                                             @endforeach
                                         @endif
                                     </select>
                                 </div>
                                 <div class="col-lg-6">
-                                    <select class="form-control" onchange="filterTable(['class','session'])" id="filter_class">
-                                        <option value="" >Filter by class</option>
+                                    <select class="form-control" onchange="filterTable(['class','session'])"
+                                        id="filter_class">
+                                        <option value="">Filter by class</option>
                                         @if (isset($classes))
-                                            @foreach ($classes as $class)   
+                                            @foreach ($classes as $class)
                                                 <option value="{{ $class->id }}">{{ $class->name }}</option>
                                             @endforeach
                                         @endif
@@ -264,12 +272,5 @@
     </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#fees-setupDatatable').DataTable({
 
-                bSort: false,
-            });
-        });
-    </script>
 @endsection
