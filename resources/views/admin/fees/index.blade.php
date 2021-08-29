@@ -72,6 +72,7 @@
                             <h4>
                                 Total Fees:({{ $fees->count() }})
                             </h4>
+                            <div class="table-responsive">
                             <table class="table table-hover " id="feesDatatable">
                                 <thead>
                                     <tr>
@@ -96,6 +97,7 @@
                                     @endforeach
                             </table>
 
+                        </div>
                         </div>
                     </div>
                 </div>

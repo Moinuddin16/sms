@@ -13,24 +13,28 @@
                     </div>
                     <!-- Card -->
                     <div class="card">
-                        <div class="card-body">
-                            <table class="table table-hover " id="datatable">
-                                <thead>
-                                    <tr>
-                                        <th>Student Id</th>
-                                        <th>Name</th>
-                                        <th>Gender</th>
-                                        <th>Session</th>
-                                        <th>Year</th>
-                                        <th>Class</th>
-                                        <th>Group</th>
-                                        <th>Section</th>
-                                        <th>Sms No</th>
-                                        <th width="100px">Active status</th>
-                                        <th width="100px">Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                        <div class="card-body ">
+                            <div class="table-responsive">
+                                <table class="table table-hover  " id="datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Student Id</th>
+                                            <th>Name</th>
+                                            <th>Gender</th>
+                                            <th>Session</th>
+                                            <th>Year</th>
+                                            <th>Class</th>
+                                            <th>Group</th>
+                                            <th>Section</th>
+                                            <th>Sms No</th>
+                                            <th width="100px">Active status</th>
+                                            <th width="100px">Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            </div>
+                       
                           
                         </div>
                     </div>

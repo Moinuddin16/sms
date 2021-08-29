@@ -2,6 +2,7 @@
     <h4>
         Total Fees-setup:({{ $feesSetups->count() }})
     </h4>
+    <div class="table-responsive">
     <table class="table table-hover " id="fees-setupDatatable">
         <thead>
             <tr>
@@ -28,6 +29,7 @@
                 @endforeach
             @endif
     </table>
+    </div>
     <script>
         $(document).ready(function() {
             $('#fees-setupDatatable').DataTable({
