@@ -56,3 +56,7 @@ Run the database seeder and you're done
     php artisan migrate:refresh
 
 Thank you for follow those steps and successfully install this application.
+
+## Admin Credentials
+email : admin@sms.com
+password : 123456
