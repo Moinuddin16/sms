@@ -58,5 +58,5 @@ Run the database seeder and you're done
 Thank you for follow those steps and successfully install this application.
 
 ## Admin Credentials
-email : admin@sms.com
+email : admin@sms.com<br>
 password : 123456
